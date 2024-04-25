@@ -1,6 +1,10 @@
+$backgroundColor: linear-gradient(-135deg, #0c0a09, #18181b)
+$sideBarColor: linear-gradient(#2563eb, #1d4ed8)
+$mainBarColor: linear-gradient(45deg, #0C0A09, #1C1917)
+
 body
     margin: 0
-    background-color: black
+    background-image: $backgroundColor
 
 .container
     width: auto
@@ -19,20 +23,24 @@ body
     width: 77.5%
     height: 100% 
 
-    background-color: gray
+    background-image: $mainBarColor
     position: relative
     float: left
     margin-right: 2.5%
 
-    border-radius: 20px
+    border-radius: 2.5vh
 
 .sideBar
     width: 20%
     height: 100%
-    background-color: blue
+    background-image: $sideBarColor
     position: relative
-    border-radius: 20px
+    border-radius: 2.5vh
     float: left
 
 .clearBoth
     clear: both
+
+.city
+    background-color: white
+    opacity: 50%
