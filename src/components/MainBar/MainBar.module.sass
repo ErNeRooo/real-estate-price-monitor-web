@@ -1,4 +1,6 @@
 @import ../../Colors.sass
+$chartSpacing: 0.7vh
+
 
 .mainBar
     width: 77.5%
@@ -6,7 +8,81 @@
 
     background-image: $mainBarColor
     position: relative
+    color: white
     float: left
     margin-right: 2.5%
-
     border-radius: 2.5vh
+
+    h1
+        font-size: 5vh
+        margin-left: 5vh
+
+.dataBar
+    width: 100%
+    height: 80%
+
+.axis
+    width: 9%
+    height: 100%
+
+    color: white
+    text-align: right
+
+    margin-right: 1%
+
+    float: left
+
+    div
+        width: 100%
+        height: 3vh
+        font-size: 2vh
+
+        margin-top: $chartSpacing
+    
+
+.chart
+    width: 60%
+    height: 100%
+
+    float: left
+
+    div
+        width: 100%
+        height: 3vh
+
+        border-radius: 5vh
+        margin-top: $chartSpacing
+
+        background-image: $sideBarColor
+
+.stats
+    width: 29%
+    height: 100%
+
+    border-left: 2px $border solid
+
+    box-sizing: border-box
+
+    margin-left: 1%
+    font-size: 5vh
+    
+    float: left
+
+    div
+        width: 75%
+        margin-right: auto
+        margin-left: auto
+        margin-top: 5vh
+        clear: both
+        label
+            display: block
+            width: 100%
+            color: white
+
+        label.result
+            display: block
+            width: 100%
+            color: blue
+
+
+
