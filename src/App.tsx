@@ -1,11 +1,11 @@
 import styles from "./App.module.sass";
-import { SideBar } from "./components/sideBar/SideBar";
-
+import { SideBar } from "./components/SideBar/SideBar";
+import { MainBar } from "./components/MainBar/MainBar";
 function App() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.mainBar}></div>
+        <MainBar></MainBar>
         <SideBar></SideBar>
         <div className={styles.clearBoth}></div>
       </div>
