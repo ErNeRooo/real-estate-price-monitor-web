@@ -17,7 +17,7 @@ export const SideBar = () => {
     "Rzeszów",
     "Kielce",
     "Olsztyn",
-    "Gorzów Wielkopolski",
+    "Gorzów Wlk.",
     "Zielona Góra",
     "Opole",
   ];
