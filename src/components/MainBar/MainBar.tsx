@@ -1,6 +1,10 @@
 import styles from "./MainBar.module.sass";
 
-export const MainBar = () => {
+interface Props {
+  cityName: string;
+}
+
+export const MainBar = ({ cityName }: Props) => {
   const chartAxisElements: string[] = [
     "500 - 750",
     "751 - 1000",
@@ -37,24 +41,22 @@ export const MainBar = () => {
 
   return (
     <div className={styles.mainBar}>
-      <h1>Ceny Najmu Mieszkań w Olsztynie</h1>
-      <div className={styles.dataBar}>
-        <div className={styles.axis}>{axisElements()}</div>
-        <div className={styles.chart}>{chartBars()}</div>
-        <div className={styles.stats}>
-          <div>
-            <label>Średnia</label>
-            <label className={styles.result}>2000 zł</label>
-          </div>
+      <h1>Ceny Najmu Mieszkań w {cityName}</h1>
+      <div className={styles.axis}>{axisElements()}</div>
+      <div className={styles.chart}>{chartBars()}</div>
+      <div className={styles.stats}>
+        <div>
+          <label>Średnia</label>
+          <label className={styles.result}>2000 zł</label>
+        </div>
 
-          <div>
-            <label>Mediana</label>
-            <label className={styles.result}>2000 zł</label>
-          </div>
-          <div>
-            <label>Dominanta</label>
-            <label className={styles.result}>2000 zł</label>
-          </div>
+        <div>
+          <label>Mediana</label>
+          <label className={styles.result}>2000 zł</label>
+        </div>
+        <div>
+          <label>Dominanta</label>
+          <label className={styles.result}>2000 zł</label>
         </div>
       </div>
     </div>
