@@ -30,6 +30,7 @@ export const MainBar = ({ cityName }: Props) => {
     ["4751 - 5000", 0],
     ["5001+", 0],
   ]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const groupData = (prices: number[]) => {
     console.log(prices);
@@ -69,6 +70,7 @@ export const MainBar = ({ cityName }: Props) => {
       .then((res) => res.json())
       .then((res) => {
         groupData(res);
+        setIsLoading((prev) => !prev);
       });
   };
 
@@ -83,7 +85,10 @@ export const MainBar = ({ cityName }: Props) => {
         {cityName[1]}
       </h1>
       <YAxis chartAxisElements={chartAxisElements}></YAxis>
-      <ChartBar chartAxisElements={chartAxisElements}></ChartBar>
+      <ChartBar
+        chartAxisElements={chartAxisElements}
+        isLoading={isLoading}
+      ></ChartBar>
       <StatsBar></StatsBar>
     </div>
   );

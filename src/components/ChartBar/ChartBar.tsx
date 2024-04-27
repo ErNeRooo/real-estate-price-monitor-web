@@ -2,9 +2,10 @@ import styles from "./ChartBar.module.sass";
 
 interface Props {
   chartAxisElements: (string | number)[][];
+  isLoading: boolean;
 }
 
-export const ChartBar = ({ chartAxisElements }: Props) => {
+export const ChartBar = ({ chartAxisElements, isLoading }: Props) => {
   const data: number[] = [];
 
   const chartBars = () => {
@@ -16,10 +17,16 @@ export const ChartBar = ({ chartAxisElements }: Props) => {
 
     return chartAxisElements.map((item) => {
       const width = Math.floor((parseInt(item[1].toString()) / maxValue) * 100);
-      console.log(item);
       return <div style={{ width: width + "%" }}></div>;
     });
   };
+
+  if (isLoading)
+    return (
+      <div className={styles.chart}>
+        <h1>Ładowanie</h1>
+      </div>
+    );
 
   return <div className={styles.chart}>{chartBars()}</div>;
 };
