@@ -1,6 +1,7 @@
 import styles from "./MainBar.module.sass";
 import { ChartBar } from "../ChartBar/ChartBar";
 import { YAxis } from "../YAxis/YAxis";
+import { StatsBar } from "../StatsBar/StatsBar";
 
 interface Props {
   cityName: string;
@@ -36,21 +37,7 @@ export const MainBar = ({ cityName }: Props) => {
       </h1>
       <YAxis chartAxisElements={chartAxisElements}></YAxis>
       <ChartBar chartAxisElements={chartAxisElements}></ChartBar>
-      <div className={styles.stats}>
-        <div>
-          <label>Średnia</label>
-          <label className={styles.result}>2000 zł</label>
-        </div>
-
-        <div>
-          <label>Mediana</label>
-          <label className={styles.result}>2000 zł</label>
-        </div>
-        <div>
-          <label>Dominanta</label>
-          <label className={styles.result}>2000 zł</label>
-        </div>
-      </div>
+      <StatsBar></StatsBar>
     </div>
   );
 };
