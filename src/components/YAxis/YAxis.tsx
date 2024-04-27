@@ -1,12 +1,12 @@
 import styles from "./YAxis.module.sass";
 
 interface Props {
-  chartAxisElements: string[];
+  chartAxisElements: (string | number)[][];
 }
 
 export const YAxis = ({ chartAxisElements }: Props) => {
   const axisElements = () => {
-    return chartAxisElements.map((item) => {
+    return Array.from(chartAxisElements).map(([item]) => {
       return <div>{item}</div>;
     });
   };

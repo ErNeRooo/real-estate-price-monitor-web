@@ -1,7 +1,7 @@
 import styles from "./SideBar.module.sass";
 
 interface Props {
-  cityNameSetter: React.Dispatch<string>;
+  cityNameSetter: React.Dispatch<(string | string)[]>;
 }
 
 export const SideBar = ({ cityNameSetter }: Props) => {
@@ -28,7 +28,7 @@ export const SideBar = ({ cityNameSetter }: Props) => {
 
   const onClickHandler = (key: string) => {
     const value: string = cities.get(key) ?? "";
-    cityNameSetter(value);
+    cityNameSetter([key, value]);
   };
 
   const cityDivs = () => {

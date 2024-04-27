@@ -4,7 +4,7 @@ import { MainBar } from "./components/MainBar/MainBar";
 import { useState } from "react";
 
 function App() {
-  const [cityName, setCityName] = useState("Warszawie");
+  const [cityName, setCityName] = useState(["Olsztyn", "Olsztynie"]);
 
   return (
     <div className={styles.container}>

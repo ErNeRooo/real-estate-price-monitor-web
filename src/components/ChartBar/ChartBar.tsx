@@ -1,13 +1,14 @@
 import styles from "./ChartBar.module.sass";
 
 interface Props {
-  chartAxisElements: string[];
+  chartAxisElements: (string | number)[][];
 }
 
 export const ChartBar = ({ chartAxisElements }: Props) => {
   const chartBars = () => {
-    return chartAxisElements.map(() => {
-      return <div></div>;
+    return chartAxisElements.map((item) => {
+      const width = item[1];
+      return <div style={{ width: width.toString() + "%" }}></div>;
     });
   };
 
