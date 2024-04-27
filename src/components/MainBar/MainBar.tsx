@@ -41,7 +41,9 @@ export const MainBar = ({ cityName }: Props) => {
 
   return (
     <div className={styles.mainBar}>
-      <h1>Ceny Najmu Mieszkań w {cityName}</h1>
+      <h1>
+        Ceny Najmu Mieszkań {cityName == "Wrocławiu" ? "we" : "w"} {cityName}
+      </h1>
       <div className={styles.axis}>{axisElements()}</div>
       <div className={styles.chart}>{chartBars()}</div>
       <div className={styles.stats}>

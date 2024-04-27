@@ -32,7 +32,7 @@ export const SideBar = ({ cityNameSetter }: Props) => {
   };
 
   const cityDivs = () => {
-    return Array.from(cities).map(([key, value]) => {
+    return Array.from(cities).map(([key]) => {
       return (
         <div
           onClick={() => {
