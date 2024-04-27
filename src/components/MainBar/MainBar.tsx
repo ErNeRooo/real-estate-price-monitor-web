@@ -57,9 +57,8 @@ export const MainBar = ({ cityName }: Props) => {
       else if (price > 4750 && price <= 5000) arrayIndex = 17;
       else if (price > 5000) arrayIndex = 18;
 
-      console.log(arrayIndex);
       setChartAxisElements((prev) => {
-        prev[arrayIndex][1] = parseInt(prev[arrayIndex][1].toString()) + price;
+        prev[arrayIndex][1] = parseInt(prev[arrayIndex][1].toString()) + 1;
         return [...prev];
       });
     });
@@ -74,7 +73,6 @@ export const MainBar = ({ cityName }: Props) => {
   };
 
   useEffect(() => {
-    console.log("a");
     getData();
   }, []);
 
