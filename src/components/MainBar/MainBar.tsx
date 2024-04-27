@@ -1,4 +1,5 @@
 import styles from "./MainBar.module.sass";
+import { ChartBar } from "../ChartBar/ChartBar";
 
 interface Props {
   cityName: string;
@@ -33,19 +34,13 @@ export const MainBar = ({ cityName }: Props) => {
     });
   };
 
-  const chartBars = () => {
-    return chartAxisElements.map(() => {
-      return <div></div>;
-    });
-  };
-
   return (
     <div className={styles.mainBar}>
       <h1>
         Ceny Najmu Mieszkań {cityName == "Wrocławiu" ? "we" : "w"} {cityName}
       </h1>
       <div className={styles.axis}>{axisElements()}</div>
-      <div className={styles.chart}>{chartBars()}</div>
+      <ChartBar chartAxisElements={chartAxisElements}></ChartBar>
       <div className={styles.stats}>
         <div>
           <label>Średnia</label>
