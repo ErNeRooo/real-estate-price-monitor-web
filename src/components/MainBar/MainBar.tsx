@@ -1,5 +1,6 @@
 import styles from "./MainBar.module.sass";
 import { ChartBar } from "../ChartBar/ChartBar";
+import { YAxis } from "../YAxis/YAxis";
 
 interface Props {
   cityName: string;
@@ -28,18 +29,12 @@ export const MainBar = ({ cityName }: Props) => {
     "5001+",
   ];
 
-  const axisElements = () => {
-    return chartAxisElements.map((item) => {
-      return <div>{item}</div>;
-    });
-  };
-
   return (
     <div className={styles.mainBar}>
       <h1>
         Ceny Najmu Mieszkań {cityName == "Wrocławiu" ? "we" : "w"} {cityName}
       </h1>
-      <div className={styles.axis}>{axisElements()}</div>
+      <YAxis chartAxisElements={chartAxisElements}></YAxis>
       <ChartBar chartAxisElements={chartAxisElements}></ChartBar>
       <div className={styles.stats}>
         <div>
