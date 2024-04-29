@@ -17,7 +17,9 @@ export const ChartBar = ({ chartAxisElements, isLoading }: Props) => {
 
     return chartAxisElements.map((item) => {
       const width = Math.floor((parseInt(item[1].toString()) / maxValue) * 100);
-      return <div style={{ width: width + "%" }}></div>;
+      return (
+        <div style={{ width: width + "%" }}>{<label>{item[1]}</label>}</div>
+      );
     });
   };
 

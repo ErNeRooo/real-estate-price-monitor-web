@@ -1,5 +1,8 @@
 @import ../../Colors.sass
-    
+
+$hoverTransition: 200ms
+$endHoverTransition: 400ms
+
 .chart
     width: 60%
     height: 100%
@@ -10,7 +13,34 @@
         width: 100%
         height: 3vh
 
+        box-sizing: border-box
         border-radius: 5vh
         margin-top: $chartSpacing
+        text-align: center
 
-        background-image: $sideBarColor
+        background-color: #2563eb
+        border: 0.3vh #2563eb solid
+        transition: $endHoverTransition
+
+        &:hover
+            min-width: fit-content 
+            padding-inline: 0.4vh
+            transition: $hoverTransition
+            background-color: transparent
+            border: 0.3vh #6d28d9 solid
+
+            label
+                
+                transition: $hoverTransition
+                transition-timing-function: cubic-bezier(1.75,.04,1,-0.22)
+                visibility: visible
+                opacity: 1
+
+        label
+            font-size: 2vh
+            display: block
+            transition: $endHoverTransition
+            transition-timing-function: cubic-bezier(.1,1.18,.57,.96)
+            visibility: hidden
+            opacity: 0
+
