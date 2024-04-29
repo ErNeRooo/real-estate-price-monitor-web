@@ -70,13 +70,14 @@ export const MainBar = ({ cityName }: Props) => {
       .then((res) => res.json())
       .then((res) => {
         groupData(res);
-        setIsLoading((prev) => !prev);
+        setIsLoading(false);
       });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getData();
-  }, []);
+  }, [cityName]);
 
   return (
     <div className={styles.mainBar}>
