@@ -5,7 +5,7 @@ $endHoverTransition: 400ms
 
 .chart
     width: 60%
-    height: 100%
+    height: 70vh
 
     float: left
 
@@ -44,3 +44,25 @@ $endHoverTransition: 400ms
             visibility: hidden
             opacity: 0
 
+    
+.loader
+    position: relative
+    top: 23.5vh
+    margin: auto
+
+    width: 10vh
+    aspect-ratio: 1
+    border-radius: 50%
+
+    border: 1vh transparent solid
+    border-top-color: blue
+
+    animation-name: loading
+    animation-duration: 1s
+    animation-iteration-count: infinite
+    //animation-timing-function: linear
+
+
+@keyframes loading
+    100%
+        transform: rotate(1turn)

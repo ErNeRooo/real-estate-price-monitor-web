@@ -26,7 +26,7 @@ export const ChartBar = ({ chartAxisElements, isLoading }: Props) => {
   if (isLoading)
     return (
       <div className={styles.chart}>
-        <h1>Ładowanie</h1>
+        <section className={styles.loader}></section>
       </div>
     );
 
