@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const MainBar = ({ cityName }: Props) => {
-  const [chartAxisElements, setChartAxisElements] = useState([
+  const [chartRows, setChartRows] = useState([
     ["500 - 750", 0],
     ["751 - 1000", 0],
     ["1001 - 1250", 0],
@@ -33,10 +33,8 @@ export const MainBar = ({ cityName }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const groupData = (prices: number[]) => {
-    console.log(prices);
     prices.forEach((price) => {
       let arrayIndex: number = 0;
-      console.log(price);
 
       if (price < 500) arrayIndex;
       else if (price > 750 && price <= 1000) arrayIndex = 1;
@@ -58,7 +56,7 @@ export const MainBar = ({ cityName }: Props) => {
       else if (price > 4750 && price <= 5000) arrayIndex = 17;
       else if (price > 5000) arrayIndex = 18;
 
-      setChartAxisElements((prev) => {
+      setChartRows((prev) => {
         prev[arrayIndex][1] = parseInt(prev[arrayIndex][1].toString()) + 1;
         return [...prev];
       });
@@ -79,7 +77,7 @@ export const MainBar = ({ cityName }: Props) => {
     getData();
 
     return () => {
-      setChartAxisElements([
+      setChartRows([
         ["500 - 750", 0],
         ["751 - 1000", 0],
         ["1001 - 1250", 0],
@@ -109,12 +107,9 @@ export const MainBar = ({ cityName }: Props) => {
         Ceny Najmu Mieszkań {cityName[1] == "Wrocławiu" ? "we" : "w"}{" "}
         {cityName[1]}
       </h1>
-      <YAxis chartAxisElements={chartAxisElements}></YAxis>
-      <ChartBar
-        chartAxisElements={chartAxisElements}
-        isLoading={isLoading}
-      ></ChartBar>
-      <StatsBar></StatsBar>
+      <YAxis chartAxisElements={chartRows}></YAxis>
+      <ChartBar chartRows={chartRows} isLoading={isLoading}></ChartBar>
+      <StatsBar isLoading={isLoading} cityName={cityName}></StatsBar>
     </div>
   );
 };

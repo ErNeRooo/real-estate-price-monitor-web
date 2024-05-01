@@ -1,21 +1,21 @@
 import styles from "./ChartBar.module.sass";
 
 interface Props {
-  chartAxisElements: (string | number)[][];
+  chartRows: (string | number)[][];
   isLoading: boolean;
 }
 
-export const ChartBar = ({ chartAxisElements, isLoading }: Props) => {
+export const ChartBar = ({ chartRows: chartRows, isLoading }: Props) => {
   const data: number[] = [];
 
   const bars = () => {
-    chartAxisElements.forEach((item) => {
+    chartRows.forEach((item) => {
       data.push(parseInt(item[1].toString()));
     });
 
     const maxValue = Math.max(...data);
 
-    return chartAxisElements.map((item, index) => {
+    return chartRows.map((item, index) => {
       const width = Math.floor((parseInt(item[1].toString()) / maxValue) * 100);
 
       return (
