@@ -8,17 +8,25 @@ interface Props {
 export const ChartBar = ({ chartAxisElements, isLoading }: Props) => {
   const data: number[] = [];
 
-  const chartBars = () => {
+  const bars = () => {
     chartAxisElements.forEach((item) => {
       data.push(parseInt(item[1].toString()));
     });
 
     const maxValue = Math.max(...data);
 
-    return chartAxisElements.map((item) => {
+    return chartAxisElements.map((item, index) => {
       const width = Math.floor((parseInt(item[1].toString()) / maxValue) * 100);
+
       return (
-        <div style={{ width: width + "%" }}>{<label>{item[1]}</label>}</div>
+        <div
+          style={{
+            width: width + "%",
+            animationDelay: (index * 50).toString() + "ms",
+          }}
+        >
+          {<label>{item[1]}</label>}
+        </div>
       );
     });
   };
@@ -30,5 +38,5 @@ export const ChartBar = ({ chartAxisElements, isLoading }: Props) => {
       </div>
     );
 
-  return <div className={styles.chart}>{chartBars()}</div>;
+  return <div className={styles.chart}>{bars()}</div>;
 };

@@ -18,9 +18,14 @@ $endHoverTransition: 400ms
         margin-top: $chartSpacing
         text-align: center
 
+        opacity: 0
         background-color: #2563eb
         border: 0.3vh #2563eb solid
         transition: $endHoverTransition
+
+        animation-name: onBarLoad
+        animation-duration: 500ms
+        animation-fill-mode: forwards
 
         &:hover
             min-width: fit-content 
@@ -66,3 +71,10 @@ $endHoverTransition: 400ms
 @keyframes loading
     100%
         transform: rotate(1turn)
+
+@keyframes onBarLoad
+    0%
+        transform: translateX(5vh)
+    100%
+        opacity: 1
+        transform: translateX(0vh)
