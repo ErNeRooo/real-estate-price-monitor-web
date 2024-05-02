@@ -27,7 +27,7 @@ export const StatsBar = ({ isLoading, cityName }: Props) => {
       .then((res) => {
         setDominants(res);
       });
-  }, []);
+  }, [cityName]);
 
   if (isLoading) {
     return <div className={styles.stats}></div>;
