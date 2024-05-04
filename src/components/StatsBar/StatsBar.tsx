@@ -12,17 +12,26 @@ export const StatsBar = ({ isLoading, cityName }: Props) => {
   const [dominants, setDominants] = useState([0, 0]);
 
   useEffect(() => {
-    fetch(`http://localhost:5157/getAverage/${cityName[0]}`, { mode: "cors" })
+    fetch(
+      `https://real-estate-price-monitor-api.azurewebsites.net/getAverage/${cityName[0]}`,
+      { mode: "cors" }
+    )
       .then((res) => res.json())
       .then((res) => {
         setAverage(res);
       });
-    fetch(`http://localhost:5157/getMedian/${cityName[0]}`, { mode: "cors" })
+    fetch(
+      `https://real-estate-price-monitor-api.azurewebsites.net/getMedian/${cityName[0]}`,
+      { mode: "cors" }
+    )
       .then((res) => res.json())
       .then((res) => {
         setMedian(res);
       });
-    fetch(`http://localhost:5157/getDominants/${cityName[0]}`, { mode: "cors" })
+    fetch(
+      `https://real-estate-price-monitor-api.azurewebsites.net/getDominants/${cityName[0]}`,
+      { mode: "cors" }
+    )
       .then((res) => res.json())
       .then((res) => {
         setDominants(res);

@@ -64,7 +64,9 @@ export const MainBar = ({ cityName }: Props) => {
   };
 
   const getData = () => {
-    fetch(`http://localhost:5157/getPrices/${cityName[0]}`, { mode: "cors" })
+    fetch(
+      `https://real-estate-price-monitor-api.azurewebsites.net/getPrices/${cityName[0]}`
+    )
       .then((res) => res.json())
       .then((res) => {
         groupData(res);
