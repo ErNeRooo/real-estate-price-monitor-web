@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const MainBar = ({ cityName }: Props) => {
+  const [prices, setPrices] = useState<number[]>([]);
   const [chartRows, setChartRows] = useState([
     ["500 - 750", 0],
     ["751 - 1000", 0],
@@ -69,6 +70,7 @@ export const MainBar = ({ cityName }: Props) => {
     )
       .then((res) => res.json())
       .then((res) => {
+        setPrices(res);
         groupData(res);
         setIsLoading(false);
       });
@@ -111,7 +113,11 @@ export const MainBar = ({ cityName }: Props) => {
       </h1>
       <YAxis chartAxisElements={chartRows}></YAxis>
       <ChartBar chartRows={chartRows} isLoading={isLoading}></ChartBar>
-      <StatsBar isLoading={isLoading} cityName={cityName}></StatsBar>
+      <StatsBar
+        isLoading={isLoading}
+        cityName={cityName}
+        prices={prices}
+      ></StatsBar>
     </div>
   );
 };

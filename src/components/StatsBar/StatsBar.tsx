@@ -1,42 +1,57 @@
-import { useEffect, useState } from "react";
 import styles from "./StatsBar.module.sass";
 
 interface Props {
   isLoading: boolean;
   cityName: (string | string)[];
+  prices: number[];
 }
 
-export const StatsBar = ({ isLoading, cityName }: Props) => {
-  const [average, setAverage] = useState(0);
-  const [median, setMedian] = useState(0);
-  const [dominants, setDominants] = useState([0, 0]);
+export const StatsBar = ({ isLoading, prices }: Props) => {
+  const calculateAverage = () => {
+    const sum = [...prices].reduce((partialSum, a) => partialSum + a, 0);
 
-  useEffect(() => {
-    fetch(
-      `https://real-estate-price-monitor-api.azurewebsites.net/getAverage/${cityName[0]}`,
-      { mode: "cors" }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setAverage(res);
-      });
-    fetch(
-      `https://real-estate-price-monitor-api.azurewebsites.net/getMedian/${cityName[0]}`,
-      { mode: "cors" }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setMedian(res);
-      });
-    fetch(
-      `https://real-estate-price-monitor-api.azurewebsites.net/getDominants/${cityName[0]}`,
-      { mode: "cors" }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setDominants(res);
-      });
-  }, [cityName]);
+    return parseInt((sum / prices.length).toString());
+  };
+
+  const calculateMedian = () => {
+    if (prices.length % 2 == 0) {
+      return (prices[prices.length / 2] + prices[prices.length / 2 - 1]) / 2;
+    } else {
+      return prices[prices.length / 2];
+    }
+  };
+
+  const calculateDominants = () => {
+    const occurrences: Map<number, number> = new Map();
+
+    // Iterate through the array and count occurrences
+    for (const number of prices) {
+      if (occurrences.has(number)) {
+        occurrences.set(number, occurrences.get(number)! + 1);
+      } else {
+        occurrences.set(number, 1);
+      }
+    }
+
+    let maxOccurrences = 0;
+    const dominants: number[] = [];
+
+    // Find the maximum number of occurrences
+    occurrences.forEach((count) => {
+      if (count > maxOccurrences) {
+        maxOccurrences = count;
+      }
+    });
+
+    // Find all numbers with the maximum number of occurrences
+    occurrences.forEach((count, number) => {
+      if (count === maxOccurrences) {
+        dominants.push(number);
+      }
+    });
+
+    return dominants;
+  };
 
   if (isLoading) {
     return <div className={styles.stats}></div>;
@@ -46,16 +61,16 @@ export const StatsBar = ({ isLoading, cityName }: Props) => {
     <div className={styles.stats}>
       <div>
         <label>Średnia</label>
-        <label className={styles.result}>{average + " zł"}</label>
+        <label className={styles.result}>{calculateAverage() + " zł"}</label>
       </div>
 
       <div>
         <label>Mediana</label>
-        <label className={styles.result}>{median + " zł"}</label>
+        <label className={styles.result}>{calculateMedian() + " zł"}</label>
       </div>
       <div>
         <label>Dominanty</label>
-        {dominants.map((item) => {
+        {calculateDominants().map((item) => {
           return <label className={styles.result}>{item + " zł"}</label>;
         })}
       </div>
