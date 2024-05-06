@@ -111,6 +111,8 @@ export const MainBar = ({ cityName }: Props) => {
         Ceny Najmu Mieszkań {cityName[1] == "Wrocławiu" ? "we" : "w"}{" "}
         {cityName[1]}
       </h1>
+      <label className={styles.quatityTitle}>Ilość Ofert</label>
+      <label className={styles.priceTitle}>Cena [zł/miesiąc]</label>
       <YAxis chartAxisElements={chartRows}></YAxis>
       <ChartBar chartRows={chartRows} isLoading={isLoading}></ChartBar>
       <StatsBar
