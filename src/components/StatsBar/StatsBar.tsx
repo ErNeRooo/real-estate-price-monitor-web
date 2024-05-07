@@ -17,7 +17,7 @@ export const StatsBar = ({ isLoading, prices }: Props) => {
     if (prices.length % 2 == 0) {
       return (prices[prices.length / 2] + prices[prices.length / 2 - 1]) / 2;
     } else {
-      return prices[prices.length / 2];
+      return prices[Math.floor(prices.length / 2)];
     }
   };
 
