@@ -66,11 +66,13 @@ export const MainBar = ({ cityName }: Props) => {
 
   const getData = () => {
     fetch(
-      `https://real-estate-price-monitor-api.azurewebsites.net/getPrices/${
+      `http://localhost:80/getPrices/${
         cityName[0] == "Gorzów Wlk." ? "Gorzów Wielkopolski" : cityName[0]
       }`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((res) => {
         setPrices(res);
         groupData(res);
